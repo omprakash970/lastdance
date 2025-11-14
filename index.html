@@ -138,87 +138,8 @@
 	
 			
 		<style>
-/* Navigation panel dropdown styles */
-.site-header-panel {
-	background: var(--theme-body-background);
-	padding: 2rem;
-	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-	position: absolute;
-	top: 100%;
-	left: 0;
-	right: 0;
-	z-index: 1000;
-}
 
-.site-header-panel-content {
-	max-width: 1200px;
-	margin: 0 auto;
-}
 
-.site-header-panel-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-.site-header-panel-list li {
-	margin-bottom: 0.75rem;
-}
-
-.site-header-panel-link {
-	color: #0067b8 !important;
-	text-decoration: none;
-	font-size: 14px;
-	display: block;
-	padding: 0.25rem 0;
-}
-
-.site-header-panel-link:hover {
-	text-decoration: underline;
-}
-
-.theme-dark .site-header-panel-link,
-.theme-high-contrast .site-header-panel-link {
-	color: #3ea6ff !important;
-}
-
-.site-header-panel-promo {
-	background: var(--theme-body-background-medium);
-	padding: 1.5rem;
-	border-radius: 4px;
-}
-
-.site-header-panel-promo p:first-child {
-	font-size: 11px;
-	letter-spacing: 0.5px;
-	margin-bottom: 0.5rem;
-	color: var(--theme-text);
-}
-
-.site-header-panel-promo h3 {
-	font-size: 18px;
-	font-weight: 600;
-	margin-bottom: 0.5rem;
-	color: var(--theme-text);
-}
-
-.site-header-panel-promo p:last-child {
-	font-size: 14px;
-	color: var(--theme-text-subtle);
-}
-
-.columns {
-	display: flex;
-	gap: 2rem;
-}
-
-.column {
-	flex: 1;
-}
-
-.column.is-one-third {
-	flex: 0 0 calc(33.333% - 1.5rem);
-}
 
 		</style>
 		</head>
@@ -378,35 +299,7 @@
 							<span class="docon docon-chevron-down-light"></span>
 						</span>
 					</button>
-					<div class="site-header-panel" hidden="" id="ms--panel-1" data-bi-name="panel-1-documentation" data-test-id="site-header-panel-1">
-						<div class="site-header-panel-content">
-							<div class="columns">
-								<div class="column is-one-third">
-									<ul class="site-header-panel-list">
-										<li><a href="#" class="site-header-panel-link">All product documentation</a></li>
-										<li><a href="#" class="site-header-panel-link">Azure documentation</a></li>
-										<li><a href="#" class="site-header-panel-link">Dynamics 365 documentation</a></li>
-										<li><a href="#" class="site-header-panel-link">Microsoft Copilot documentation</a></li>
-										<li><a href="#" class="site-header-panel-link">Microsoft 365 documentation</a></li>
-										<li><a href="#" class="site-header-panel-link">Power Platform documentation</a></li>
-										<li><a href="#" class="site-header-panel-link">Code samples</a></li>
-									</ul>
-								</div>
-								<div class="column is-one-third">
-									<ul class="site-header-panel-list">
-										<li><a href="#" class="site-header-panel-link">Troubleshooting documentation</a></li>
-									</ul>
-								</div>
-								<div class="column is-one-third">
-									<div class="site-header-panel-promo">
-										<p class="font-weight-semibold margin-bottom-xs">FREE TO JOIN. REQUEST TO ATTEND.</p>
-										<h3 class="font-size-h5 margin-bottom-xs">Microsoft AI Tour</h3>
-										<p class="font-size-sm">Take your business to the AI frontier.</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+				
 				</panel-controller>
 			</li>
 		<!---->
@@ -943,54 +836,10 @@ if (path.length >= 5 && path[0] === "en-us" && path[1] === "users" && path[3] ==
 		});
 	}
 
-	function initHeaderPanels() {
-		document.querySelectorAll('panel-controller').forEach(controller => {
-			const button = controller.querySelector('.site-header-button');
-			const panelId = button.getAttribute('aria-controls');
-			const panel = document.getElementById(panelId);
-			
-			if (!button || !panel) return;
-
-			button.addEventListener('click', (e) => {
-				e.stopPropagation();
-				const isExpanded = button.getAttribute('aria-expanded') === 'true';
-				
-				// Close all other panels
-				document.querySelectorAll('panel-controller .site-header-button').forEach(btn => {
-					btn.setAttribute('aria-expanded', 'false');
-					const otherId = btn.getAttribute('aria-controls');
-					const otherPanel = document.getElementById(otherId);
-					if (otherPanel) otherPanel.setAttribute('hidden', '');
-				});
-
-				// Toggle current panel
-				if (isExpanded) {
-					button.setAttribute('aria-expanded', 'false');
-					panel.setAttribute('hidden', '');
-				} else {
-					button.setAttribute('aria-expanded', 'true');
-					panel.removeAttribute('hidden');
-				}
-			});
-		});
-
-		// Close panels when clicking outside
-		document.addEventListener('click', (e) => {
-			if (!e.target.closest('panel-controller')) {
-				document.querySelectorAll('panel-controller .site-header-button').forEach(btn => {
-					btn.setAttribute('aria-expanded', 'false');
-					const panelId = btn.getAttribute('aria-controls');
-					const panel = document.getElementById(panelId);
-					if (panel) panel.setAttribute('hidden', '');
-				});
-			}
-		});
-	}
-
 	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', () => { initThemeControls(); initDropdown(); initHeaderPanels(); });
+		document.addEventListener('DOMContentLoaded', () => { initThemeControls(); initDropdown(); });
 	} else {
-		initThemeControls(); initDropdown(); initHeaderPanels();
+		initThemeControls(); initDropdown();
 	}
 })();
 </script>
