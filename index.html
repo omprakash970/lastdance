@@ -45,6 +45,12 @@
     background-size: contain;
 }
 
+/* Dark theme - white chevron */
+.theme-dark .docon-chevron-down-light::before,
+.theme-high-contrast .docon-chevron-down-light::before {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' stroke='%23ffffff' stroke-width='2' fill='none'><polyline points='6 9 12 15 18 9'/></svg>");
+}
+
 /* --- Chevron Left (light) --- */
 .docon-chevron-left-light::before {
     content: "";
@@ -775,8 +781,7 @@ if (path.length >= 5 && path[0] === "en-us" && path[1] === "users" && path[3] ==
 
 	function initThemeControls() {
 		const saved = localStorage.getItem(STORAGE_KEY);
-		const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-		const initial = saved || (prefersDark ? 'dark' : 'light');
+		const initial = saved || 'light';
 		applyTheme(initial);
 
 		document.querySelectorAll('.theme-control').forEach(btn => {
