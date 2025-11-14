@@ -738,11 +738,9 @@ window.addEventListener("DOMContentLoaded", () => {
     const url = new URL(window.location.href);
     const path = url.pathname.split("/").filter(Boolean);
 
-    let username = null;
-    let credID = null;
-    let sharingId = url.searchParams.get("sharingId");
+    let sharingLinkFormat = false;
 
-    // If the shared link format is used:
+    // Expected sharing link format:
     // /api/credentials/share/en-us/USERNAME/CREDID?sharingId=XYZ
     if (
         path.length >= 6 &&
@@ -751,28 +749,22 @@ window.addEventListener("DOMContentLoaded", () => {
         path[2] === "share" &&
         path[3] === "en-us"
     ) {
-        username = path[4];
-        credID = path[5];
+        sharingLinkFormat = true;
 
-        // THE MAGIC PART → CHANGE URL WITHOUT RELOAD
+        const username = path[4];
+        const credID = path[5];
+
+        // 🎯 YOUR FINAL CLEAN URL FORMAT
         const finalURL = `/en-us/users/${username}/credentials/${credID}`;
+
+        // Magic: update browser URL WITHOUT reloading page
         window.history.replaceState({}, "", finalURL);
+
+        // Debug log
+        console.log("Shared link detected → Transformed to:", finalURL);
     }
 
-    // Update HTML
-    if (document.querySelector("#username")) {
-        document.querySelector("#username").textContent = username;
-    }
-    if (document.querySelector("#credid")) {
-        document.querySelector("#credid").textContent = credID;
-    }
-    if (document.querySelector("#sharingid")) {
-        document.querySelector("#sharingid").textContent = sharingId;
-    }
-
-    console.log("Username:", username);
-    console.log("CredID:", credID);
-    console.log("SharingID:", sharingId);
+    // Continue loading your normal page content...
 });
 </script>
 
