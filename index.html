@@ -736,17 +736,14 @@
 <script>
 window.addEventListener("DOMContentLoaded", () => {
     const url = new URL(window.location.href);
-
-    // Path breakdown:
-    // /api/credentials/share/en-us/USERNAME/CREDID
     const path = url.pathname.split("/").filter(Boolean);
-
-    const sharingId = url.searchParams.get("sharingId");
 
     let username = null;
     let credID = null;
+    let sharingId = url.searchParams.get("sharingId");
 
-    // Expected: ["api","credentials","share","en-us","USERNAME","CREDID"]
+    // If the shared link format is used:
+    // /api/credentials/share/en-us/USERNAME/CREDID?sharingId=XYZ
     if (
         path.length >= 6 &&
         path[0] === "api" &&
@@ -756,12 +753,13 @@ window.addEventListener("DOMContentLoaded", () => {
     ) {
         username = path[4];
         credID = path[5];
+
+        // THE MAGIC PART → CHANGE URL WITHOUT RELOAD
+        const finalURL = `/en-us/users/${username}/credentials/${credID}`;
+        window.history.replaceState({}, "", finalURL);
     }
 
-    console.log("Username:", username);
-    console.log("Credential ID:", credID);
-    console.log("Sharing ID:", sharingId);
-
+    // Update HTML
     if (document.querySelector("#username")) {
         document.querySelector("#username").textContent = username;
     }
@@ -771,8 +769,13 @@ window.addEventListener("DOMContentLoaded", () => {
     if (document.querySelector("#sharingid")) {
         document.querySelector("#sharingid").textContent = sharingId;
     }
+
+    console.log("Username:", username);
+    console.log("CredID:", credID);
+    console.log("SharingID:", sharingId);
 });
 </script>
+
 
 
 <script>
