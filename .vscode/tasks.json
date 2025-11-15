@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "no-op",
+			"type": "shell",
+			"command": "echo noop"
+		},
+		{
+			"label": "remove-not-auth",
+			"type": "shell",
+			"command": "powershell -NoProfile -Command \"$p='C:\\Users\\Oppie_549\\final cert\\index.html'; (Get-Content -Raw $p) -replace ' not-authenticated','' | Set-Content -NoNewline $p\""
+		}
+	]
+}
