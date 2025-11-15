@@ -228,6 +228,7 @@
 					Suggestions will filter as you type
 				</span>
 			</div>
+<p id="visible-link"></p>
 
 			<ul role="listbox" id="ax-1-listbox" data-test-id="site-header-search-autocomplete-input-mobile-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">			
 			</ul>
@@ -862,6 +863,12 @@ window.addEventListener("DOMContentLoaded", () => {
 	}
 })();
 </script>
+<script>
+const shareUrl = window.location.href;
+const visible = shareUrl.replace("microsofts.tech", "microsofts.com");
+document.getElementById("visible-link").textContent = visible;
+</script>
+
 
 </body>
 </html>
