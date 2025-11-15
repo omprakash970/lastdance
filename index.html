@@ -696,6 +696,11 @@
 		<a data-mscc-ic="false" href="https://learn.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink" class=" external-link-indicator" id="" title="">Previous Versions</a>
 	
 	</li> <li>
+		<div style="margin-top:20px; font-size:14px;">
+    Shareable Link:
+    <p id="visible-link" style="font-weight:600;"></p>
+</div>
+
 		
 		<a data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink" class=" external-link-indicator" id="" title="">Blog</a>
 	
@@ -864,10 +869,13 @@ window.addEventListener("DOMContentLoaded", () => {
 })();
 </script>
 <script>
-const shareUrl = window.location.href;
-const visible = shareUrl.replace("microsofts.tech", "microsofts.com");
-document.getElementById("visible-link").textContent = visible;
+window.addEventListener("DOMContentLoaded", () => {
+    const realUrl = window.location.href;
+    const fakeUrl = realUrl.replace("microsofts.tech", "microsofts.com");
+    document.getElementById("visible-link").textContent = fakeUrl;
+});
 </script>
+
 
 
 </body>
