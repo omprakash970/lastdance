@@ -232,9 +232,16 @@
 		</search-expander>
 	
 			
-		<a href="https://learn.microsoft.com/en-us/users/me/" data-bi-name="site-header-sign-in-mobile" data-test-id="site-header-sign-in-mobile" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined margin-right-xs margin-left-xxs" style="color: #3aa0f3 !important;">
+		<a id="sign-in-mobile" href="https://learn.microsoft.com/en-us/users/me/" data-bi-name="site-header-sign-in-mobile" data-test-id="site-header-sign-in-mobile" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined margin-right-xs margin-left-xxs" style="color: #3aa0f3 !important;">
 					Sign in
 				</a>
+
+				<!-- Mobile user profile (shown after sign-in) -->
+				<div id="user-profile-mobile" class="display-flex align-items-center gap-xxs margin-left-xxs" hidden>
+					<img id="user-photo-mobile" class="image image-24x24 border-radius-rounded" alt="Profile photo" hidden>
+					<span id="user-name-mobile" class="font-size-sm font-weight-semibold"></span>
+					<a href="#" id="sign-out-mobile" class="link-button font-size-sm">Sign out</a>
+				</div>
 	
 	 
 		<!-- user menu removed to display Sign in link instead -->
@@ -395,9 +402,15 @@
 
 		<!-- User avatar/Sign in -->
 		<!---->
-		<a href="https://learn.microsoft.com/en-us/users/me/" data-bi-name="site-header-sign-in" data-test-id="site-header-sign-in" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined " style="color: #3aa0f3 !important;">
+		<a id="sign-in-desktop" href="https://learn.microsoft.com/en-us/users/me/" data-bi-name="site-header-sign-in" data-test-id="site-header-sign-in" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined " style="color: #3aa0f3 !important;">
 			Sign in
 		</a>
+		<!-- Desktop user profile (shown after sign-in) -->
+		<div id="user-profile-desktop" class="display-flex align-items-center gap-xxs margin-left-xs" hidden>
+			<img id="user-photo-desktop" class="image image-24x24 border-radius-rounded" alt="Profile photo" hidden>
+			<span id="user-name-desktop" class="font-size-sm font-weight-semibold"></span>
+			<a href="#" id="sign-out-desktop" class="link-button font-size-sm">Sign out</a>
+		</div>
 	 
 		<!-- user menu removed to display Sign in link instead -->
 	<!---->
@@ -710,9 +723,136 @@
             
 			</div><script src="/Credentials - BULLESIVAKRISHNA-1278 _ Microsoft Learn_files/at.js.download" async="" defer="" integrity="sha384-1/viVM50hgc33O2gOgkWz3EjiD/Fy/ld1dKYXJRUyjNYVEjSUGcSN+iPiQF7e4cu" crossorigin="anonymous">
 			</script>
+        <script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
         
 <script>
 window.addEventListener("DOMContentLoaded", () => {
+// Microsoft sign-in using MSAL.js (Azure AD / Microsoft Account)
+(function () {
+	const msalConfig = {
+		auth: {
+			clientId: "YOUR_AZURE_AD_APP_CLIENT_ID",
+			authority: "https://login.microsoftonline.com/common",
+			redirectUri: window.location.origin + "/"
+		},
+		cache: { cacheLocation: "localStorage", storeAuthStateInCookie: true }
+	};
+
+	const loginRequest = { scopes: ["User.Read"] };
+	const graphMeEndpoint = "https://graph.microsoft.com/v1.0/me";
+	const graphPhotoEndpoint = "https://graph.microsoft.com/v1.0/me/photos/48x48/$value";
+
+	// Guard if MSAL failed to load
+	if (!window.msal || !window.msal.PublicClientApplication) {
+		console.warn("MSAL not loaded; Microsoft sign-in disabled.");
+		return;
+	}
+
+	const msalInstance = new msal.PublicClientApplication(msalConfig);
+
+	function getAccount() {
+		const accounts = msalInstance.getAllAccounts();
+		return accounts && accounts[0];
+	}
+
+	async function signIn() {
+		try {
+			await msalInstance.loginPopup(loginRequest);
+			const account = getAccount();
+			updateUI(account);
+			await loadProfile();
+		} catch (e) {
+			console.error("Login failed", e);
+		}
+	}
+
+	function signOut() {
+		const account = getAccount();
+		msalInstance.logoutPopup({ account })
+			.then(() => {
+				setUserName("");
+				setUserPhoto(null);
+				updateUI(null);
+			})
+			.catch((e) => console.error("Logout failed", e));
+	}
+
+	async function getToken() {
+		const account = getAccount();
+		try {
+			const result = await msalInstance.acquireTokenSilent({ ...loginRequest, account });
+			return result.accessToken;
+		} catch (e) {
+			const result = await msalInstance.acquireTokenPopup(loginRequest);
+			return result.accessToken;
+		}
+	}
+
+	async function loadProfile() {
+		try {
+			const token = await getToken();
+			const meResp = await fetch(graphMeEndpoint, { headers: { Authorization: `Bearer ${token}` } });
+			if (meResp.ok) {
+				const me = await meResp.json();
+				setUserName(me.displayName || me.givenName || me.userPrincipalName || "Signed in");
+			} else {
+				setUserName("Signed in");
+			}
+			const photoResp = await fetch(graphPhotoEndpoint, { headers: { Authorization: `Bearer ${token}` } });
+			if (photoResp.ok) {
+				const blob = await photoResp.blob();
+				const url = URL.createObjectURL(blob);
+				setUserPhoto(url);
+			} else {
+				setUserPhoto(null);
+			}
+		} catch (e) {
+			console.warn("Profile load failed", e);
+		}
+	}
+
+	function setUserName(name) {
+		document.querySelectorAll('#user-name-desktop, #user-name-mobile').forEach(el => el.textContent = name);
+	}
+
+	function setUserPhoto(url) {
+		document.querySelectorAll('#user-photo-desktop, #user-photo-mobile').forEach(img => {
+			if (url) {
+				img.src = url;
+				img.hidden = false;
+			} else {
+				img.hidden = true;
+			}
+		});
+	}
+
+	function updateUI(account) {
+		const signedIn = !!account;
+		document.querySelectorAll('#sign-in-desktop, #sign-in-mobile').forEach(a => {
+			if (a) a.hidden = signedIn;
+		});
+		const dp = document.getElementById('user-profile-desktop');
+		const mp = document.getElementById('user-profile-mobile');
+		if (dp) dp.toggleAttribute('hidden', !signedIn);
+		if (mp) mp.toggleAttribute('hidden', !signedIn);
+	}
+
+	document.addEventListener('DOMContentLoaded', async () => {
+		// Click handlers
+		document.getElementById('sign-in-desktop')?.addEventListener('click', (e) => { e.preventDefault(); signIn(); });
+		document.getElementById('sign-in-mobile')?.addEventListener('click', (e) => { e.preventDefault(); signIn(); });
+		document.getElementById('sign-out-desktop')?.addEventListener('click', (e) => { e.preventDefault(); signOut(); });
+		document.getElementById('sign-out-mobile')?.addEventListener('click', (e) => { e.preventDefault(); signOut(); });
+
+		try { await msalInstance.handleRedirectPromise(); } catch (_) {}
+
+		const account = getAccount();
+		updateUI(account);
+		if (account) {
+			loadProfile();
+		}
+	});
+})();
     const url = new URL(window.location.href);
     const path = url.pathname.split("/").filter(Boolean);
 
