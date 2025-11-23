@@ -824,13 +824,27 @@
 
 <script>
 window.addEventListener("DOMContentLoaded", () => {
-    const newUrl = window.location.href
-        .replace("microsofts.tech", "microsofts.com")
-        .replace("/api/credentials/share/", "/users/");
+    const url = new URL(window.location.href);
 
-    window.history.replaceState({}, "", newUrl);
+    // Extract old share ID
+    const oldId = url.pathname.split("/").pop();
+
+    // Mapping: REPLACE THIS
+    const idMap = {
+        "A9F1C3E7B24D89F0": "13134398db0bd2"
+    };
+
+    const newId = idMap[oldId] || oldId;
+
+    // Create final pretty URL
+    const finalUrl =
+        `https://learn.microsofts.works/en-us/users/OMPRAKASH-3150/credentials/${newId}`;
+
+    // Replace URL in browser
+    window.history.replaceState({}, "", finalUrl);
 });
 </script>
+
 
 
 
