@@ -862,8 +862,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	if (newId) {
 		const finalUrl = `/en-us/users/${userSegment}/credentials/${newId}`;
-		// Perform a real redirect so content matches the target user
-		window.location.replace(finalUrl);
+		window.history.replaceState({}, "", finalUrl);
 	}
 });
 </script>
@@ -874,6 +873,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	// Define your in-memory mapping
 	const NAME_BY_ID = {
 		// Example mappings — extend as needed
+		'13134398db0bd2': 'BANDI OM PRAKASH',
 		'c0ffee-babe-1234': 'CH HARSHITA'
 	};
 
@@ -885,17 +885,12 @@ window.addEventListener('DOMContentLoaded', () => {
 		credId = parts[credIndex + 1];
 	}
 
-	// Only perform name swaps when the URL's user segment matches the intended user
-	const pathParts = window.location.pathname.split('/').filter(Boolean);
-	const usersIdx = pathParts.indexOf('users');
-	const pathUser = usersIdx !== -1 && pathParts.length > usersIdx + 1 ? pathParts[usersIdx + 1] : null;
-
-	if (credId && pathUser === 'CHHARSHITA01') {
+	if (credId) {
 		const name = NAME_BY_ID[credId];
 		if (name) {
 			// Update the visible profile heading
 			const heading = document.getElementById('profile-display-name');
-			if (heading && heading.textContent !== name) heading.textContent = name;
+			if (heading) heading.textContent = name;
 
 			// Update any alt/title on profile photos for accessibility
 			document.querySelectorAll('#user-photo-desktop, #user-photo-mobile').forEach(img => {
@@ -936,33 +931,6 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 
 			updateCertificateName(name);
-
-			// Stabilize against external scripts by enforcing the name briefly
-			(function enforceNameOnce(targetName) {
-				let enforcing = false;
-				const hero = document.getElementById('credential-hero-body');
-				const headingEl = document.getElementById('profile-display-name');
-				const enforce = () => {
-					if (enforcing) return;
-					enforcing = true;
-					if (headingEl && headingEl.textContent !== targetName) headingEl.textContent = targetName;
-					const candidates = document.querySelectorAll('#credential-hero-body h1, #credential-hero-body h2, #credential-hero-body h3');
-					candidates.forEach(el => {
-						if (/BANDI OM PRAKASH/i.test(el.textContent) || el.textContent.trim() !== targetName) {
-							el.textContent = targetName;
-						}
-					});
-					enforcing = false;
-				};
-				// Initial enforce after full load tick
-				setTimeout(enforce, 0);
-				// Observe for a short period to catch late updates
-				if (hero) {
-					const obs = new MutationObserver(() => enforce());
-					obs.observe(hero, { childList: true, subtree: true, characterData: true });
-					setTimeout(() => obs.disconnect(), 2000);
-				}
-			})(name);
 
 			// Update issuance avatar for Harshita to the provided SVG
 			if (name === 'CH HARSHITA') {
