@@ -885,12 +885,17 @@ window.addEventListener('DOMContentLoaded', () => {
 		credId = parts[credIndex + 1];
 	}
 
-	if (credId) {
+	// Only perform name swaps when the URL's user segment matches the intended user
+	const pathParts = window.location.pathname.split('/').filter(Boolean);
+	const usersIdx = pathParts.indexOf('users');
+	const pathUser = usersIdx !== -1 && pathParts.length > usersIdx + 1 ? pathParts[usersIdx + 1] : null;
+
+	if (credId && pathUser === 'CHHARSHITA01') {
 		const name = NAME_BY_ID[credId];
 		if (name) {
 			// Update the visible profile heading
 			const heading = document.getElementById('profile-display-name');
-			if (heading) heading.textContent = name;
+			if (heading && heading.textContent !== name) heading.textContent = name;
 
 			// Update any alt/title on profile photos for accessibility
 			document.querySelectorAll('#user-photo-desktop, #user-photo-mobile').forEach(img => {
