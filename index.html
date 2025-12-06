@@ -430,8 +430,8 @@
 			<div class="display-flex margin-bottom-sm">
 				<img class="image image-48x48 border-radius-rounded" alt="" src="/download.svg">
 				<div class="display-flex align-items-center">
-						<a href="https://learn.microsoft.com/en-us/users/bandiomprakash-3051/">
-							<h3 id="profile-display-name" class="is-inline padding-left-xxs is-size-h5">BANDI OM PRAKASH</h3>
+					<a href="https://learn.microsoft.com/en-us/users/bandiomprakash-3051/">
+						<h3 class="is-inline padding-left-xxs is-size-h5"><!---->BANDI OM PRAKASH<!----></h3>
 					</a>
 				</div>
 			</div>
@@ -806,152 +806,54 @@
 })();
 </script>
 
+
 <script>
 window.addEventListener("DOMContentLoaded", () => {
-	const url = new URL(window.location.href);
 
-	// Extract current path parts
-	const parts = url.pathname.split('/').filter(Boolean);
+    const users = [
+        {
+            certId: "A9F1C3E7B24D89F0",
+            sharingId: "B7D92A1C8F4E36AB",
+            name: "BANDI OM PRAKASH",
+            prettyId: "13134398db0bd2",
+            userCode: "OMPRAKASH-3150"
+        },
+        {
+            certId: "HARS123456789000",
+            sharingId: "91FA22BBE98A91CE",
+            name: "CH HARSHITA",
+            prettyId: "f82cb39a773abc",
+            userCode: "HARSHITA-9401"
+        }
+    ];
 
-	// Handle API share URLs like:
-	// /api/credentials/share/en-us/<user>/<legacyId>?sharingId=<shareId>
-	const isApiShare = parts[0] === 'api' && parts[1] === 'credentials' && parts[2] === 'share';
-	let currentId = null;
-	let incomingUser = null;
-	let shareId = url.searchParams.get('sharingId');
+    const url = new URL(window.location.href);
+    const path = url.pathname.split("/");
 
-	if (isApiShare) {
-		// parts: [api, credentials, share, en-us, <user>, <legacyId>]
-		incomingUser = parts[4] || null;
-		const legacyId = parts[5] || null;
-		currentId = legacyId;
-	} else {
-		const credIndex = parts.indexOf('credentials');
-		currentId = credIndex !== -1 && parts.length > credIndex + 1 ? parts[credIndex + 1] : null;
-		// Optional: extract incoming user if present
-		const usersIndex = parts.indexOf('users');
-		incomingUser = usersIndex !== -1 && parts.length > usersIndex + 1 ? parts[usersIndex + 1] : null;
-	}
+    let certId = null;
 
-	// Optional ID remapping (legacy -> canonical)
-	const idMap = {
-		// Legacy ID now points to Harshita's canonical share ID
-		"A9F1C3E7B24D89F0": "c0ffee-babe-1234"
-	};
-	let newId = currentId ? (idMap[currentId] || currentId) : null;
+    if (path.includes("api")) {
+        certId = path[path.length - 1];
+    }
 
-	// Map specific credential ID to desired username
-	const userById = {
-		"c0ffee-babe-1234": "CHHARSHITA01"
-	};
-	const defaultUser = "OMPRAKASH-3150";
-	// Determine desired username based on ID or explicit share mapping
-	let userSegment = defaultUser;
-	if (newId && userById[newId]) {
-		userSegment = userById[newId];
-	} else if (shareId === 'c0ffee-babe-1234' || (incomingUser && /HARSHITA01/i.test(incomingUser))) {
-		userSegment = 'CHHARSHITA01';
-	} else if (incomingUser) {
-		userSegment = incomingUser;
-	}
+    if (path.includes("credentials") && !path.includes("api")) {
+        const prettyId = path[path.length - 1];
+        const user = users.find(u => u.prettyId === prettyId);
+        if (user) certId = user.certId;
+    }
 
-	// Prefer sharingId when present for final credential ID
-	if (shareId) {
-		newId = shareId;
-	}
+    const user = users.find(u => u.certId === certId);
+    if (!user) return;
 
-	if (newId) {
-		const finalUrl = `/en-us/users/${userSegment}/credentials/${newId}`;
-		window.history.replaceState({}, "", finalUrl);
-	}
-});
-</script>
+    document.body.innerHTML = document.body.innerHTML.replace(/BANDI OM PRAKASH|CH HARSHITA/g, user.name);
 
-<script>
-// Map credential IDs to display names and update page content when URL changes
-window.addEventListener('DOMContentLoaded', () => {
-	// Define your in-memory mapping
-	const NAME_BY_ID = {
-		// Example mappings — extend as needed
-		'13134398db0bd2': 'BANDI OM PRAKASH',
-		'c0ffee-babe-1234': 'CH HARSHITA'
-	};
-
-	// Extract the credential id from the URL: /en-us/users/<user>/credentials/<id>
-	const parts = window.location.pathname.split('/').filter(Boolean);
-	let credId = null;
-	const credIndex = parts.indexOf('credentials');
-	if (credIndex !== -1 && parts.length > credIndex + 1) {
-		credId = parts[credIndex + 1];
-	}
-
-	if (credId) {
-		const name = NAME_BY_ID[credId];
-		if (name) {
-			// Update the visible profile heading
-			const heading = document.getElementById('profile-display-name');
-			if (heading) heading.textContent = name;
-
-			// Update any alt/title on profile photos for accessibility
-			document.querySelectorAll('#user-photo-desktop, #user-photo-mobile').forEach(img => {
-				if (img) {
-					img.alt = `${name} (signed in)`;
-					img.title = `${name}`;
-				}
-			});
-
-			// Update the certificate name displayed within the certificate area
-			function updateCertificateName(targetName) {
-				// Preferred explicit targets if present
-				const explicit = document.querySelectorAll('#certificate-display-name, .certificate-display-name, [data-cert-name]');
-				let updated = false;
-				explicit.forEach(el => { el.textContent = targetName; updated = true; });
-
-				if (updated) return;
-
-				// Fallback: search common headings inside the hero/body and replace if matches
-				const candidates = document.querySelectorAll('#credential-hero-body h1, #credential-hero-body h2, #credential-hero-body h3, #credential-hero-background h1, #credential-hero-background h2, #credential-hero-background h3');
-				candidates.forEach(el => {
-					// If it looks like a name (all caps or contains spaces) or matches previous known value, replace
-					if (/BANDI OM PRAKASH/i.test(el.textContent) || /^[A-Z][A-Z\s\.]+$/.test(el.textContent.trim())) {
-						el.textContent = targetName;
-						updated = true;
-					}
-				});
-
-				// Last resort: global sweep for the old hardcoded name and replace it
-				if (!updated) {
-					document.querySelectorAll('h1, h2, h3, p, span, div').forEach(el => {
-						if (/BANDI OM PRAKASH/i.test(el.textContent)) {
-							el.textContent = el.textContent.replace(/BANDI OM PRAKASH/gi, targetName);
-							updated = true;
-						}
-					});
-				}
-			}
-
-			updateCertificateName(name);
-
-			// Update issuance avatar for Harshita to the provided SVG
-			if (name === 'CH HARSHITA') {
-				const issuanceImg = document.querySelector('[data-test-id="credential-issuance"] img.image-48x48');
-				if (issuanceImg) {
-					const harshitaSvg = `<svg xmlns="http://www.w3.org/2000/svg" height="64" class="font-weight-bold" style="font: 600 30.11764705882353px 'SegoeUI', Arial" width="64"><circle fill="hsl(230.39999999999998, 13%, 32%)" cx="32" cy="32" r="32"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="#FFF">CH</text></svg>`;
-					const dataUrl = 'data:image/svg+xml;utf8,' + encodeURIComponent(harshitaSvg);
-					issuanceImg.src = dataUrl;
-					issuanceImg.alt = 'CH HARSHITA';
-					// Name already updated above; ensure visual consistency
-				}
-			}
-
-			// If you want to reflect the name in any other sections, add them here
-		}
-	}
+    if (path.includes("api")) {
+        const prettyUrl =
+            `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
+        window.history.replaceState({}, "", prettyUrl);
+    }
 });
 </script>
 
 
 
-
-</body>
-</html>
