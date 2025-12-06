@@ -430,8 +430,8 @@
 			<div class="display-flex margin-bottom-sm">
 				<img class="image image-48x48 border-radius-rounded" alt="" src="/download.svg">
 				<div class="display-flex align-items-center">
-					<a href="https://learn.microsoft.com/en-us/users/bandiomprakash-3051/">
-						<h3 class="is-inline padding-left-xxs is-size-h5"><!---->BANDI OM PRAKASH<!----></h3>
+						<a href="https://learn.microsoft.com/en-us/users/bandiomprakash-3051/">
+							<h3 id="profile-display-name" class="is-inline padding-left-xxs is-size-h5">BANDI OM PRAKASH</h3>
 					</a>
 				</div>
 			</div>
@@ -826,6 +826,45 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Replace URL in browser
     window.history.replaceState({}, "", finalUrl);
+});
+</script>
+
+<script>
+// Map credential IDs to display names and update page content when URL changes
+window.addEventListener('DOMContentLoaded', () => {
+	// Define your in-memory mapping
+	const NAME_BY_ID = {
+		// Example mappings — extend as needed
+		'13134398db0bd2': 'BANDI OM PRAKASH',
+		'c0ffee-babe-1234': 'CH HARSHITA'
+	};
+
+	// Extract the credential id from the URL: /en-us/users/<user>/credentials/<id>
+	const parts = window.location.pathname.split('/').filter(Boolean);
+	let credId = null;
+	const credIndex = parts.indexOf('credentials');
+	if (credIndex !== -1 && parts.length > credIndex + 1) {
+		credId = parts[credIndex + 1];
+	}
+
+	if (credId) {
+		const name = NAME_BY_ID[credId];
+		if (name) {
+			// Update the visible profile heading
+			const heading = document.getElementById('profile-display-name');
+			if (heading) heading.textContent = name;
+
+			// Update any alt/title on profile photos for accessibility
+			document.querySelectorAll('#user-photo-desktop, #user-photo-mobile').forEach(img => {
+				if (img) {
+					img.alt = `${name} (signed in)`;
+					img.title = `${name}`;
+				}
+			});
+
+			// If you want to reflect the name in any other sections, add them here
+		}
+	}
 });
 </script>
 
