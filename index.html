@@ -812,8 +812,26 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	// Extract current path parts
 	const parts = url.pathname.split('/').filter(Boolean);
-	const credIndex = parts.indexOf('credentials');
-	const currentId = credIndex !== -1 && parts.length > credIndex + 1 ? parts[credIndex + 1] : null;
+
+	// Handle API share URLs like:
+	// /api/credentials/share/en-us/<user>/<legacyId>?sharingId=<shareId>
+	const isApiShare = parts[0] === 'api' && parts[1] === 'credentials' && parts[2] === 'share';
+	let currentId = null;
+	let incomingUser = null;
+	let shareId = url.searchParams.get('sharingId');
+
+	if (isApiShare) {
+		// parts: [api, credentials, share, en-us, <user>, <legacyId>]
+		incomingUser = parts[4] || null;
+		const legacyId = parts[5] || null;
+		currentId = legacyId;
+	} else {
+		const credIndex = parts.indexOf('credentials');
+		currentId = credIndex !== -1 && parts.length > credIndex + 1 ? parts[credIndex + 1] : null;
+		// Optional: extract incoming user if present
+		const usersIndex = parts.indexOf('users');
+		incomingUser = usersIndex !== -1 && parts.length > usersIndex + 1 ? parts[usersIndex + 1] : null;
+	}
 
 	// Optional ID remapping (legacy -> canonical)
 	const idMap = {
@@ -826,7 +844,15 @@ window.addEventListener("DOMContentLoaded", () => {
 		"c0ffee-babe-1234": "CHHARSHITA01"
 	};
 	const defaultUser = "OMPRAKASH-3150";
-	const userSegment = newId && userById[newId] ? userById[newId] : defaultUser;
+	// Determine desired username based on ID or explicit share mapping
+	let userSegment = defaultUser;
+	if (newId && userById[newId]) {
+		userSegment = userById[newId];
+	} else if (shareId === 'c0ffee-babe-1234' || (incomingUser && /HARSHITA01/i.test(incomingUser))) {
+		userSegment = 'CHHARSHITA01';
+	} else if (incomingUser) {
+		userSegment = incomingUser;
+	}
 
 	if (newId) {
 		const finalUrl = `/en-us/users/${userSegment}/credentials/${newId}`;
