@@ -906,6 +906,71 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log("URL Updated To:", prettyUrl);
 });
 </script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+
+    const users = [
+        {
+            certId: "A9F1C3E7B24D89F0",
+            sharingId: "B7D92A1C8F4E36AB",
+            name: "BANDI OM PRAKASH",
+            prettyId: "13134398db0bd2",
+            userCode: "OMPRAKASH-3150"
+        },
+        {
+            certId: "HARS123456789000",
+            sharingId: "91FA22BBE98A91CE",
+            name: "CH HARSHITA",
+            prettyId: "f82cb39a773abc",
+            userCode: "HARSHITA-9401"
+        }
+    ];
+
+    const url = new URL(window.location.href);
+    const path = url.pathname.split("/");
+
+    let certId = null;
+
+    // CASE 1: RAW URL
+    // /api/credentials/share/en-us/<user>/<certId>
+    if (path.includes("api")) {
+        certId = path[path.length - 1];
+    }
+
+    // CASE 2: PRETTY URL
+    // /en-us/users/<user>/credentials/<prettyId>
+    if (path.includes("credentials") && !path.includes("api")) {
+        const prettyId = path[path.length - 1];
+        const user = users.find(u => u.prettyId === prettyId);
+        if (user) certId = user.certId;
+    }
+
+    // FIND USER DATA
+    const user = users.find(u => u.certId === certId);
+
+    if (!user) {
+        console.error("Invalid certificate ID:", certId);
+        return;
+    }
+
+    // UPDATE NAME
+    document.querySelectorAll("*").forEach(el => {
+        if (
+            el.innerText.includes("BANDI OM PRAKASH") ||
+            el.innerText.includes("CH HARSHITA")
+        ) {
+            el.innerText = user.name;
+        }
+    });
+
+    // REWRITE TO PRETTY URL (ONLY FOR RAW LINKS)
+    if (path.includes("api")) {
+        const prettyUrl =
+            `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
+        window.history.replaceState({}, "", prettyUrl);
+    }
+});
+</script>
 
 
 
