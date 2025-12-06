@@ -809,49 +809,69 @@
 
 <script>
 window.addEventListener("DOMContentLoaded", () => {
+	const url = new URL(window.location.href);
+	const pathParts = url.pathname.split('/').filter(Boolean);
+	const isApiShare = pathParts[0] === 'api' && pathParts[1] === 'credentials' && pathParts[2] === 'share';
 
-    const users = [
-        {
-            certId: "A9F1C3E7B24D89F0",
-            sharingId: "B7D92A1C8F4E36AB",
-            name: "BANDI OM PRAKASH",
-            prettyId: "13134398db0bd2",
-            userCode: "OMPRAKASH-3150"
-        },
-        {
-            certId: "HARS123456789000",
-            sharingId: "91FA22BBE98A91CE",
-            name: "CH HARSHITA",
-            prettyId: "f82cb39a773abc",
-            userCode: "HARSHITA-9401"
-        }
-    ];
+	const sharingId = url.searchParams.get('sharingId');
 
-    const url = new URL(window.location.href);
-    const path = url.pathname.split("/");
+	// Decide final target based on sharingId first
+	let targetUser = null;
+	let finalId = null;
+	let targetName = null;
 
-    let certId = null;
+	if (sharingId === 'c0ffee-babe-1234') {
+		targetUser = 'CHHARSHITA01';
+		finalId = 'c0ffee-babe-1234';
+		targetName = 'CH HARSHITA';
+	} else if (sharingId === 'B7D92A1C8F4E36AB') {
+		targetUser = 'BANDIOMPRAKASH-3150';
+		finalId = 'B7D92A1C8F4E36AB';
+		targetName = 'BANDI OM PRAKASH';
+	}
 
-    if (path.includes("api")) {
-        certId = path[path.length - 1];
-    }
+	// If no sharingId mapping, infer from pretty URL
+	if (!finalId && pathParts.includes('credentials') && !isApiShare) {
+		const prettyId = pathParts[pathParts.length - 1];
+		if (prettyId === 'c0ffee-babe-1234') {
+			targetUser = 'CHHARSHITA01';
+			finalId = 'c0ffee-babe-1234';
+			targetName = 'CH HARSHITA';
+		} else if (prettyId === '13134398db0bd2') {
+			targetUser = 'OMPRAKASH-3150';
+			finalId = '13134398db0bd2';
+			targetName = 'BANDI OM PRAKASH';
+		}
+	}
 
-    if (path.includes("credentials") && !path.includes("api")) {
-        const prettyId = path[path.length - 1];
-        const user = users.find(u => u.prettyId === prettyId);
-        if (user) certId = user.certId;
-    }
+	// If coming from API share without matching sharingId, keep incoming user but still redirect to pretty form
+	if (isApiShare && !finalId) {
+		const incomingUser = pathParts[4] || null;
+		const legacyId = pathParts[5] || null;
+		// Legacy to pretty fallback (if known)
+		if (legacyId === 'A9F1C3E7B24D89F0') {
+			finalId = sharingId || '13134398db0bd2';
+			targetUser = incomingUser || 'OMPRAKASH-3150';
+			targetName = targetUser === 'OMPRAKASH-3150' ? 'BANDI OM PRAKASH' : undefined;
+		}
+	}
 
-    const user = users.find(u => u.certId === certId);
-    if (!user) return;
+	// Apply redirect if we determined a final target
+	if (finalId && targetUser) {
+		const prettyUrl = `/en-us/users/${targetUser}/credentials/${finalId}`;
+		window.location.replace(prettyUrl);
+		return;
+	}
 
-    document.body.innerHTML = document.body.innerHTML.replace(/BANDI OM PRAKASH|CH HARSHITA/g, user.name);
-
-    if (path.includes("api")) {
-        const prettyUrl =
-            `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
-        window.history.replaceState({}, "", prettyUrl);
-    }
+	// Update name in-place if we have a targetName and we're already on that user's page
+	if (targetName) {
+		const parts = window.location.pathname.split('/').filter(Boolean);
+		const usersIdx = parts.indexOf('users');
+		const pathUser = usersIdx !== -1 && parts.length > usersIdx + 1 ? parts[usersIdx + 1] : null;
+		if ((pathUser && targetUser && pathUser === targetUser) || !isApiShare) {
+			document.body.innerHTML = document.body.innerHTML.replace(/BANDI OM PRAKASH|CH HARSHITA/g, targetName);
+		}
+	}
 });
 </script>
 
