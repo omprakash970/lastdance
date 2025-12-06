@@ -806,24 +806,7 @@
 })();
 </script>
 
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-    const url = new URL(window.location.href);
 
-    const oldId = url.pathname.split("/").pop();
-
-    const idMap = {
-        "A9F1C3E7B24D89F0": "13134398db0bd2"
-    };
-
-    const newId = idMap[oldId] || oldId;
-
-    const finalUrl =
-        `https://learn.microsofts.works/en-us/users/OMPRAKASH-3150/credentials/${newId}`;
-
-    window.history.replaceState({}, "", finalUrl);
-});
-</script>
 <script>
 window.addEventListener("DOMContentLoaded", () => {
 
