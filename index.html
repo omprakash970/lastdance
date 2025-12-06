@@ -149,7 +149,7 @@
 			<body id="body" data-bi-name="body" class="layout-body " lang="en-us" dir="ltr">
 				<header class="layout-body-header">
 		<div class="header-holder has-default-focus">			
-		<a href="https://learn.microsofts.works/en-us/users/OMPRAKASH-3150/credentials/A9F1C3E7B24D89F0" style="z-index: 1070" class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body">
+		<a id="dynamic-user-link" href="#" style="z-index: 1070" class="outline-color-text visually-hidden-until-focused position-fixed inner-focus focus-visible top-0 left-0 right-0 padding-xs text-align-center background-color-body">
 			Skip to main content
 		</a>
 			<div hidden="" id="cookie-consent-holder" data-test-id="cookie-consent-container"></div>
@@ -247,472 +247,328 @@
 				</div>
 	
 </div>
-				<div id="ms--primary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L1-header" data-test-id="primary-header"><!---->
-		<!-- MS logo -->		
-		<a href="https://www.microsoft.com/" aria-label="Microsoft" itemprop="url" data-bi-name="site-header-microsoft-logo" data-test-id="site-header-microsoft-logo" class="site-header-logo ">		
-		<svg aria-hidden="true" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" itemprop="logo" itemscope="itemscope">
-			<path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022"></path>
-			<path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00"></path>
-			<path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef"></path>
-			<path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900"></path>
-		</svg>
-	
-		</a>
-		<!-- Divider -->
-		<div class="site-header-divider"></div>
-		<!-- Brand -->
-		
-		<a class="site-header-brand" itemprop="url" href="https://learn.microsoft.com/en-us/" data-bi-name="site-header-brand-learn" data-test-id="site-header-brand">
-			<span><!---->Learn<!----></span>
-		</a>
-	
+				<div id="ms--primary-nav" class="site-header display-none display-flex-tablet" data-bi-name="L1-header" data-test-id="primary-header">
+    <!-- MS logo -->
+    <a href="https://www.microsoft.com/" aria-label="Microsoft" itemprop="url" data-bi-name="site-header-microsoft-logo" data-test-id="site-header-microsoft-logo" class="site-header-logo">
+        <svg aria-hidden="true" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" itemprop="logo">
+            <path d="M11.5216 0.5H0V11.9067H11.5216V0.5Z" fill="#f25022"></path>
+            <path d="M24.2418 0.5H12.7202V11.9067H24.2418V0.5Z" fill="#7fba00"></path>
+            <path d="M11.5216 13.0933H0V24.5H11.5216V13.0933Z" fill="#00a4ef"></path>
+            <path d="M24.2418 13.0933H12.7202V24.5H24.2418V13.0933Z" fill="#ffb900"></path>
+        </svg>
+    </a>
 
-		<div id="ms--search-expander-wrapper" class="display-flex justify-content-space-between flex-grow-1 align-items-center overflow-x-hidden height-full">
-			<!-- Main Nav -->
-			
-		<overflow-menu class="align-self-stretch" style="display: block; overflow: hidden; width: 100%;">
-			<nav class="site-header-nav" data-bi-name="primary-nav" data-overflow-menu-container="" aria-label="Global" style="visibility: visible; overflow: hidden;">
-				<button type="button" data-overflow-menu-prev-button="" data-bi-name="site-header-btn-prev" class="button button-clear button-sm inner-focus" hidden="" aria-label="Previous">
-					<span class="icon" aria-hidden="true">
-						<span class="docon docon-chevron-left-light"></span>
-					</span>
-				</button>
+    <div class="site-header-divider"></div>
 
-				
-		<ul class="display-flex gap-xxs-desktop">
-			<!---->
-			<li aria-setsize="4" aria-posinset="1">
-				<panel-controller data-bi-name="site-header-btn-1-documentation">
-					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-1" data-test-id="site-header-panel-controller-1" style="white-space: nowrap;">
-						<span><!---->Documentation<!----></span>
-						<span class="icon expanded-indicator" aria-hidden="true">
-							<span class="docon docon-chevron-down-light"></span>
-						</span>
-					</button>
-				
-				</panel-controller>
-			</li>
-		<!---->
-			<li aria-setsize="4" aria-posinset="2">
-				<panel-controller data-bi-name="site-header-btn-2-training">
-					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-2" data-test-id="site-header-panel-controller-2" style="white-space: nowrap;">
-						<span><!---->Training<!----></span>
-						<span class="icon expanded-indicator" aria-hidden="true">
-							<span class="docon docon-chevron-down-light"></span>
-						</span>
-					</button>
-					<div class="site-header-panel" hidden="" id="ms--panel-2" data-bi-name="panel-2-training" data-test-id="site-header-panel-2">
-						
-	
-		
-	
-		
-	
-					</div>
-				</panel-controller>
-			</li>
-		<!---->
-			<li aria-setsize="4" aria-posinset="3">
-				<panel-controller data-bi-name="site-header-btn-3-qna">
-					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-3" data-test-id="site-header-panel-controller-3" style="white-space: nowrap;">
-						<span><!---->Q&amp;A<!----></span>
-						<span class="icon expanded-indicator" aria-hidden="true">
-							<span class="docon docon-chevron-down-light"></span>
-						</span>
-					</button>
-					<div class="site-header-panel" hidden="" id="ms--panel-3" data-bi-name="panel-3-qna" data-test-id="site-header-panel-3">
-						
+    <a class="site-header-brand" href="https://learn.microsoft.com/en-us/" data-bi-name="site-header-brand-learn" data-test-id="site-header-brand">
+        <span>Learn</span>
+    </a>
 
-	
-					</div>
-				</panel-controller>
-			</li>
-		<!---->
-			<li aria-setsize="4" aria-posinset="4">
-				<panel-controller data-bi-name="site-header-btn-4-topics">
-					<button type="button" aria-expanded="false" class="site-header-button" data-overflow-menu-item="" aria-controls="ms--panel-4" data-test-id="site-header-panel-controller-4" style="white-space: nowrap;">
-						<span><!---->Topics<!----></span>
-						<span class="icon expanded-indicator" aria-hidden="true">
-							<span class="docon docon-chevron-down-light"></span>
-						</span>
-					</button>
-					<div class="site-header-panel" hidden="" id="ms--panel-4" data-bi-name="panel-4-topics" data-test-id="site-header-panel-4">
-					</div>
-				</panel-controller>
-			</li>
-		<!---->
-		</ul>
-	
+    <div id="ms--search-expander-wrapper" class="display-flex justify-content-space-between flex-grow-1 align-items-center overflow-x-hidden height-full">
+        <!-- Primary nav -->
+        <overflow-menu class="align-self-stretch" style="display: block; width: 100%; overflow: hidden;">
+            <nav class="site-header-nav" data-bi-name="primary-nav" aria-label="Global" style="visibility: visible;">
+                <button type="button" class="button button-clear button-sm inner-focus" hidden aria-label="Previous">
+                    <span class="icon"><span class="docon docon-chevron-left-light"></span></span>
+                </button>
 
-				<button type="button" data-overflow-menu-next-button="" data-bi-name="site-header-btn-next" class="button button-clear button-sm inner-focus margin-left-auto" hidden="" aria-label="Next">
-					<span class="icon" aria-hidden="true">
-						<span class="docon docon-chevron-right-light"></span>
-					</span>
-				</button>
-			</nav>
-		</overflow-menu>
-	
+                <ul class="display-flex gap-xxs-desktop">
+                    <li>
+                        <panel-controller>
+                            <button type="button" class="site-header-button" aria-expanded="false">
+                                <span>Documentation</span>
+                                <span class="icon expanded-indicator"><span class="docon docon-chevron-down-light"></span></span>
+                            </button>
+                        </panel-controller>
+                    </li>
 
-			<!-- Search -->
-			
-		<search-expander data-test-id="site-header-search" class="flex-grow-1 margin-left-xxs">
-			<div hidden="" id="ms--site-header-search" class="display-flex align-items-center gap-xxs ">
-				
-		<form class="flex-grow-1" method="GET" role="search" id="ms--site-header-search-form" data-bi-name="site-header-search-form" name="site-header-search-form" aria-label="Search" action="https://learn.microsoft.com/en-us/search/">
-			<div class="autocomplete display-block" data-bi-name="autocomplete"><!---->
-			<div class="field-body control ">
-				<input role="combobox" maxlength="100" aria-autocomplete="list" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="site-header-search-autocomplete-input" data-test-id="site-header-search-autocomplete-input" class="autocomplete-input input input-sm
-						
-						width-full" type="search" name="terms" aria-expanded="false" aria-owns="ax-0-listbox" aria-controls="ax-0-listbox" aria-activedescendant="" aria-label="Search" aria-describedby="ms--site-header-search-autocomplete-input-description" placeholder="Search" data-bi-name="site-header-search-autocomplete-input" pattern=".*">
+                    <li>
+                        <panel-controller>
+                            <button type="button" class="site-header-button" aria-expanded="false">
+                                <span>Training</span>
+                                <span class="icon expanded-indicator"><span class="docon docon-chevron-down-light"></span></span>
+                            </button>
+                        </panel-controller>
+                    </li>
 
-				
-				
+                    <li>
+                        <panel-controller>
+                            <button type="button" class="site-header-button" aria-expanded="false">
+                                <span>Q&A</span>
+                                <span class="icon expanded-indicator"><span class="docon docon-chevron-down-light"></span></span>
+                            </button>
+                        </panel-controller>
+                    </li>
 
-				<span hidden="" id="ms--site-header-search-autocomplete-input-description">
-					Suggestions will filter as you type
-				</span>
-			</div>
+                    <li>
+                        <panel-controller>
+                            <button type="button" class="site-header-button" aria-expanded="false">
+                                <span>Topics</span>
+                                <span class="icon expanded-indicator"><span class="docon docon-chevron-down-light"></span></span>
+                            </button>
+                        </panel-controller>
+                    </li>
+                </ul>
 
-			<ul role="listbox" id="ax-0-listbox" data-test-id="site-header-search-autocomplete-input-listbox" class="autocomplete-suggestions is-vertically-scrollable padding-xxs " aria-label="Suggestions" hidden="">
-				
-				
-			</ul>
-		<!----></div>
-			<!-- mobile safari will not dispatch submit event unless there's a submit button that is not display:none -->
-			<button type="submit" class="visually-hidden" tabindex="-1" aria-hidden="true"></button>
-			<input name="category" hidden="" value="">
-			
-			
-		</form>
-	
-				<button data-search-expander-trigger-close="" type="button" class="button button-clear inner-focus" aria-controls="ms--site-header-search" aria-label="Close search" data-bi-name="site-header-search-close" data-test-id="site-header-search-close">
-					<span class="icon" aria-hidden="true">
-						<span class="docon docon-navigate-close"></span>
-					</span>
-				</button>
-			</div>
-			<button data-search-expander-trigger-open="" type="button" class="button button-clear inner-focus" aria-controls="ms--site-header-search" aria-label="Open search" data-bi-name="site-header-search-open" data-test-id="site-header-search-open">
-				<span class="icon" aria-hidden="true">
-					<span class="docon docon-search"></span>
-				</span>
-			</button>
-		</search-expander>
-	
-		</div>
+                <button type="button" class="button button-clear button-sm inner-focus margin-left-auto" hidden aria-label="Next">
+                    <span class="icon"><span class="docon docon-chevron-right-light"></span></span>
+                </button>
+            </nav>
+        </overflow-menu>
 
-		
-		<a id="sign-in-desktop" href="https://learn.microsoft.com/en-us/users/me/" data-bi-name="site-header-sign-in" data-test-id="site-header-sign-in" class="link-button font-size-sm flex-shrink-0 docs-sign-in auth-status-determined " style="color: #3aa0f3 !important;">
-			Sign in
-			
-		</a>
-		<div id="user-profile-desktop" class="display-flex align-items-center gap-xxs margin-left-xs" hidden>
-			<img id="user-photo-desktop" class="image image-24x24 border-radius-rounded" alt="Profile photo" hidden>
-			<span id="user-name-desktop" class="font-size-sm font-weight-semibold"></span>
-			<a href="#" id="sign-out-desktop" class="link-button font-size-sm">Sign out</a>
-		</div>
-		</div>
-			</header>
+        <!-- Desktop search -->
+        <search-expander class="flex-grow-1 margin-left-xxs">
+            <div hidden id="ms--site-header-search" class="display-flex align-items-center gap-xxs">
+                <form method="GET" role="search" action="https://learn.microsoft.com/en-us/search/" class="flex-grow-1">
+                    <div class="autocomplete display-block">
+                        <div class="field-body control">
+                            <input class="autocomplete-input input input-sm width-full"
+                                   type="search"
+                                   name="terms"
+                                   placeholder="Search"
+                                   aria-label="Search">
+                        </div>
+                    </div>
+                    <button type="submit" class="visually-hidden"></button>
+                </form>
 
-		</div>
-	</header>
-				 
+                <button type="button" class="button button-clear inner-focus" aria-label="Close search">
+                    <span class="icon"><span class="docon docon-navigate-close"></span></span>
+                </button>
+            </div>
 
-				<main id="main" role="main" class="layout-body-main " data-bi-name="content" lang="en-us" dir="ltr"><div class="is-full-height"><!---->
-		<section class="uhf-container padding-sm">
-			
-		<div class="width-full border-bottom margin-bottom-sm" data-test-id="credential-info">
-			<h1 class="font-size-h3 display-inline-block"><!---->GitHub Copilot<!----></h1>
-			
-		<div class="margin-top-md" data-test-id="credential-issuance">
-			<p class="padding-bottom-xs font-size-md color-text">
-				Issued by Microsoft on December 2, 2025 to:
-			</p>
-			<div class="display-flex margin-bottom-sm">
-				<img class="image image-48x48 border-radius-rounded" alt="" src="/download.svg">
-				<div class="display-flex align-items-center">
-					<a href="https://learn.microsoft.com/en-us/users/bandiomprakash-3051/">
-						<h3 class="is-inline padding-left-xxs is-size-h5"><!---->BANDI OM PRAKASH<!----></h3>
-					</a>
-				</div>
-			</div>
-		</div>
-	
-		</div>
-	
-			<div class="columns is-multiline">
-				
-				<div class="column is-three-quarters-tablet">
-					
-		<section class="display-flex justify-content-center" data-test-id="credential-hero">
-			<div id="credential-hero-background" class="background-color-tertiary justify-content-center border-radius-lg width-full display-flex-print padding-lg padding-xl-desktop padding-xl-print" style="background-image:url(/certificate-background.svg); -webkit-print-color-adjust: exact; print-color-adjust: exact;" data-test-id="credential-hero-background">
-				<div id="credential-hero-background-inner" class="display-flex flex-direction-column background-color-body padding-xs padding-sm-tablet border-radius-lg width-full" data-test-id="credential-hero-background-inner">
-					<div id="credential-hero-header" class="display-flex justify-content-center margin-bottom-lg">
-						
-		<svg xmlns="http://www.w3.org/2000/svg" width="108" height="23" viewBox="72 72 337 74" preserveAspectRatio="xMidYMin slice">
-			<g data-name="MS-symbol">
-				<clippath>
-					<path transform="matrix(1 0 0 -1 0 216)" d="M0 216h482V0H0z"></path>
-				</clippath>
-				<g clip-path="url(#a)">
-					<path d="M394.942 104.59h-10.858v25.003h-7.38V104.59h-5.182v-5.965h5.182v-4.308c0-3.254 1.06-5.92 3.178-7.998 2.12-2.079 4.835-3.118 8.15-3.118.882 0 1.666.045 2.35.135a9.37 9.37 0 011.806.407v6.296c-.24-.14-.663-.31-1.265-.512-.603-.2-1.296-.3-2.078-.3-1.528 0-2.702.476-3.526 1.43-.824.954-1.235 2.365-1.235 4.232v3.736h10.858v-6.959l7.321-2.229v9.188h7.381v5.965h-7.38v14.49c0 1.91.345 3.254 1.038 4.037.693.783 1.782 1.175 3.27 1.175.42 0 .927-.1 1.52-.3a7.178 7.178 0 001.552-.724v6.025c-.463.261-1.23.502-2.305.723a15.742 15.742 0 01-3.178.331c-3.073 0-5.378-.817-6.914-2.455-1.537-1.637-2.305-4.102-2.305-7.396zm-48.407 9.73c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.45-2.545-6.04-2.545-2.67 0-4.745.888-6.22 2.666-1.477 1.777-2.215 4.313-2.215 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.892-2.993 6.91-4.489 12.05-4.489 4.841 0 8.621 1.441 11.343 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.447 9.018-4.338 11.99-2.892 2.973-6.829 4.458-11.81 4.458-4.8 0-8.61-1.41-11.432-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-16.417-7.802c0 1.045.331 1.863.994 2.456.662.592 2.128 1.34 4.398 2.243 2.912 1.166 4.956 2.476 6.131 3.932 1.175 1.456 1.762 3.22 1.762 5.287 0 2.912-1.12 5.252-3.359 7.02-2.24 1.767-5.267 2.65-9.083 2.65-1.285 0-2.706-.155-4.263-.467-1.556-.31-2.877-.707-3.96-1.19v-7.169a17.945 17.945 0 004.277 2.198c1.526.543 2.911.814 4.157.814 1.647 0 2.862-.23 3.645-.693.784-.46 1.175-1.235 1.175-2.319 0-1.005-.406-1.853-1.22-2.546-.813-.693-2.355-1.492-4.624-2.395-2.69-1.125-4.599-2.39-5.724-3.796-1.125-1.406-1.687-3.193-1.687-5.362 0-2.792 1.11-5.086 3.33-6.884 2.217-1.797 5.095-2.696 8.63-2.696 1.084 0 2.3.12 3.645.361 1.346.242 2.47.553 3.374.934v6.93c-.964-.644-2.089-1.195-3.374-1.658-1.286-.462-2.56-.693-3.826-.693-1.386 0-2.465.271-3.238.813-.774.543-1.16 1.286-1.16 2.23m-35.066 7.562c0 3.233.733 5.703 2.2 7.411 1.465 1.707 3.564 2.56 6.295 2.56 2.652 0 4.67-.853 6.055-2.56 1.386-1.708 2.08-4.238 2.08-7.592 0-3.334-.719-5.849-2.155-7.547-1.436-1.697-3.449-2.545-6.039-2.545-2.672 0-4.745.888-6.222 2.666-1.476 1.777-2.214 4.313-2.214 7.607m-7.592.24c0-5.12 1.446-9.177 4.338-12.17 2.893-2.993 6.91-4.489 12.051-4.489 4.84 0 8.621 1.441 11.342 4.323 2.721 2.883 4.082 6.774 4.082 11.674 0 5.021-1.446 9.018-4.338 11.99-2.892 2.973-6.828 4.458-11.809 4.458-4.8 0-8.61-1.41-11.433-4.232-2.822-2.82-4.233-6.673-4.233-11.554m-3.136-16.448c.582 0 1.105.041 1.567.121.462.08.853.18 1.175.301v7.38c-.382-.28-.939-.546-1.672-.798-.733-.25-1.622-.376-2.666-.376-1.788 0-3.299.753-4.534 2.26-1.235 1.505-1.853 3.825-1.853 6.958v15.635h-7.29V98.624h7.29v4.88h.12c.663-1.687 1.667-3.007 3.013-3.96 1.346-.954 2.962-1.432 4.85-1.432m-27.956 26.18c1.084 0 2.28-.25 3.585-.754a15.06 15.06 0 003.615-1.988v6.778c-1.165.663-2.485 1.165-3.962 1.506-1.475.342-3.098.512-4.865.512-4.559 0-8.265-1.44-11.116-4.323-2.852-2.88-4.278-6.562-4.278-11.04 0-4.98 1.456-9.083 4.37-12.307 2.91-3.224 7.037-4.835 12.38-4.835 1.366 0 2.746.176 4.143.527 1.395.352 2.504.758 3.328 1.22v6.99c-1.125-.824-2.274-1.462-3.45-1.914a9.966 9.966 0 00-3.599-.678c-2.872 0-5.192.934-6.959 2.802-1.768 1.868-2.652 4.388-2.652 7.562 0 3.132.85 5.573 2.546 7.32 1.697 1.748 4.002 2.621 6.914 2.621m-22.112 5.302h-7.29V98.624h7.29zm-8.044-39.916c0-1.205.437-2.214 1.311-3.028.874-.813 1.913-1.22 3.118-1.22 1.285 0 2.35.417 3.193 1.25.844.834 1.266 1.833 1.266 2.998 0 1.185-.432 2.18-1.296 2.982-.864.804-1.918 1.205-3.163 1.205-1.246 0-2.295-.406-3.148-1.219-.854-.815-1.28-1.803-1.28-2.968m-6.274-3.284v43.2h-7.5v-33.86h-.12l-13.408 33.86h-4.97l-13.738-33.86h-.09v33.86h-6.929v-43.2h10.755l12.412 32.024h.18l13.105-32.024z" class="fill-current-color fill-link-text-forced-colors color-text-subtle"></path>
-					<path d="M106.214 106.214H71.996V71.996h34.218z" fill="#f25022"></path>
-					<path d="M143.993 106.214h-34.218V71.996h34.218z" fill="#7fba00"></path>
-					<path d="M106.214 143.993H71.996v-34.218h34.218z" fill="#00a4ef"></path>
-					<path d="M143.993 143.993h-34.218v-34.218h34.218z" fill="#ffb900"></path>
-				</g>
-			</g>
-		</svg>
-	
-					</div>
-					<div id="credential-hero-body" class="has-line-height-reset text-align-center">
-						
-									<h3 class="margin-block-xxs font-size-sm font-size-xl-tablet font-weight-bold">
-										BANDI OM PRAKASH
-									</h3>
-									<p class="margin-bottom-xs font-size-xs font-size-sm-tablet">
-										has successfully passed all requirements for
-									</p>
-							  
-						<div id="credential-badge-icon-mobile" class="display-none-print display-none-tablet display-flex justify-content-center margin-bottom-xs">
-							<div class="image image-64x64"><!----><img alt="" class="" role="presentation" src="/github-copilot.svg"><!----></div>
-						</div>
-						<h3 class="margin-bottom-xs font-size-xs font-size-md-tablet font-weight-bold">
-							GitHub Copilot
-						</h3>
-					</div>
-					<div id="credential-hero-footer" class="display-flex flex-direction-column flex-direction-row-tablet align-items-center justify-content-center padding-none padding-sm-tablet margin-top-xxs margin-top-md-tablet width-full font-size-xs">
-						<div class="column is-two-fifths flex-grow-1 text-align-center text-align-left-tablet">
-							<p><!---->Credential ID: A7E1063A2870D0A4<!----></p>
-							<p><!---->Certification number: 431D32-B8C79E<!----></p>
-							<p>
-										Earned on: December 2, 2025
-								  </p>
-							 <p>
-										Expires on:
-										December 3, 2027
-								  </p>
-							 <div class="margin-top-sm-tablet">
-		<span class="badge badge-sm badge-primary">
-			<span class="docon docon-check margin-right-xxs"></span>
-			Online Verifiable
-		</span>
-	</div>
+            <button type="button" class="button button-clear inner-focus" aria-label="Open search">
+                <span class="icon"><span class="docon docon-search"></span></span>
+            </button>
+        </search-expander>
+    </div>
 
-						</div>
+    <a id="sign-in-desktop" href="https://learn.microsoft.com/en-us/users/me/" class="link-button font-size-sm" style="color:#3aa0f3 !important;">
+        Sign in
+    </a>
+
+    <div id="user-profile-desktop" class="display-flex align-items-center gap-xxs margin-left-xs" hidden>
+        <img id="user-photo-desktop" class="image image-24x24 border-radius-rounded" alt="Profile photo" hidden>
+        <span id="user-name-desktop" class="font-size-sm font-weight-semibold"></span>
+        <a href="#" id="sign-out-desktop" class="link-button font-size-sm">Sign out</a>
+    </div>
+</div>
+
+</header>
+</div>
+</header>
+
+<!-- MAIN BODY START -->
+<main id="main" role="main" class="layout-body-main">
+
+<section class="uhf-container padding-sm">
+    <div class="width-full border-bottom margin-bottom-sm">
+        <h1 class="font-size-h3 display-inline-block">GitHub Copilot</h1>
+
+        <div class="margin-top-md">
+            <p class="padding-bottom-xs font-size-md color-text">
+                Issued by Microsoft on December 2, 2025 to:
+            </p>
+
+            <div class="display-flex margin-bottom-sm">
+                <img class="image image-48x48 border-radius-rounded" src="/download.svg">
+                <div class="display-flex align-items-center">
+                    <a id="dynamic-profile-link" class="dynamic-user-link" href="#">
+
+                        <h3 class="is-inline padding-left-xxs is-size-h5"><span class="dyn-name"></span></h3>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate body -->
+    <div class="columns is-multiline">
+        <div class="column is-three-quarters-tablet">
+
+            <section class="display-flex justify-content-center">
+                <div id="credential-hero-background" class="background-color-tertiary border-radius-lg padding-lg">
+                    <div id="credential-hero-background-inner" class="display-flex flex-direction-column background-color-body padding-xs border-radius-lg">
+
+                        <!-- Certificate name -->
+                        <div class="text-align-center">
+                            <h3 class="margin-block-xxs font-size-xl font-weight-bold">
+                                <span class="dyn-name"></span>
+                            </h3>
+                            <p class="margin-bottom-xs font-size-sm">
+                                has successfully passed all requirements for
+                            </p>
+                        </div>
+
+                        <!-- Badge -->
+                        <div class="display-none-tablet display-flex justify-content-center margin-bottom-xs">
+                            <div class="image image-64x64">
+                                <img src="/github-copilot.svg" alt="">
+                            </div>
+                        </div>
+
+                        <h3 class="margin-bottom-xs font-size-md font-weight-bold">GitHub Copilot</h3>
+
+                        <!-- CERTIFICATE DETAILS FIXED -->
+                        <div class="display-flex flex-direction-row-tablet justify-content-center font-size-xs margin-top-md">
+                            <div class="column is-two-fifths text-align-left-tablet">
+
+                                <!-- ✔ DYNAMIC VALUES -->
+                                <p>Credential ID: <span class="dyn-cert-id"></span></p>
+                                <p>Certification number: <span class="dyn-cert-num"></span></p>
+
+                                <p>Earned on: December 2, 2025</p>
+                                <p>Expires on: December 3, 2027</p>
+
+                                <div class="margin-top-sm-tablet">
+                                    <span class="badge badge-sm badge-primary">
+                                        <span class="docon docon-check margin-right-xxs"></span>
+                                        Online Verifiable
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
 
 <p><span id="sharingid"></span></p>
 
-						<div class="column flex-grow-1 display-none display-flex-tablet justify-content-center">
-														<div id="credential-badge-icon" class="image image-76x76 image-128x128-desktop display-none-print">
-								<img alt="" class="" role="presentation" src="https://learn.microsoft.com/en-us/media/learn/certification/badges/github-copilot.svg">
-							</div>
-							<div id="credential-badge-icon-print" class="image image-128x128 display-block-print is-hidden">
-								<img alt="" class="" role="presentation" src="/github-copilot.svg">
-							</div>
-						</div>
+<div class="column flex-grow-1 display-none display-flex-tablet justify-content-center">
+    <div id="credential-badge-icon" class="image image-76x76 image-128x128-desktop display-none-print">
+        <img alt="" role="presentation" src="https://learn.microsoft.com/en-us/media/learn/certification/badges/github-copilot.svg">
+    </div>
+    <div id="credential-badge-icon-print" class="image image-128x128 display-block-print is-hidden">
+        <img alt="" role="presentation" src="/github-copilot.svg">
+    </div>
+</div>
 
-						<div class="column is-two-fifths flex-grow-1 display-flex justify-content-flex-end padding-top-xxs padding-none-tablet">
-							<figure class="width-100 margin-left-xs-tablet">
-								<img src="https://raw.githubusercontent.com/omprakash970/macrosoft/main/achievement-signature.png" role="presentation" alt="Satya Narayana Nadella's signature">
-							</figure>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	
-				</div>
-				<div class="column is-one-quarter-tablet">
-					
-		<div data-test-id="credential-verification">
-			<div class="image image-128x128 margin-bottom-xs">
-				<img alt="" class="" role="presentation" src="/github-copilot.svg">
-			</div>
+<div class="column is-two-fifths flex-grow-1 display-flex justify-content-flex-end padding-top-xxs padding-none-tablet">
+    <figure class="width-100 margin-left-xs-tablet">
+        <img src="https://raw.githubusercontent.com/omprakash970/macrosoft/main/achievement-signature.png"
+             alt="Satya Narayana Nadella's signature">
+    </figure>
+</div>
 
-			<ol class="list-style-none">
-				<li class="padding-block-xxs border-bottom">
-					<div class="display-flex flex-wrap-wrap gap-xxs align-items-center font-weight-semibold padding-block-xxs padding-block-xs-desktop">
-						Status
-						<span class="badge badge-sm badge-success badge-filled margin-block-none margin-inline-xxs" id="active-status-tag"><!---->Active<!----></span>
-						<span class="badge badge-primary badge-sm margin-none">
-							<span class="docon docon-check margin-right-xxs"></span>
-							Online Verifiable
-						</span>
-					</div>
-				</li>
-				<li class="padding-block-xxs border-bottom">
-					<span><!---->Credential ID: A7E1063A2870D0A4<!----></span>
-				</li>
-				<li class="padding-block-xxs border-bottom">
-							<span> Certification number: 431D32-B8C79E </span>
-					  </li>
-				<li class="padding-block-xxs border-bottom">
-					<span>
-						Earned on: December 2, 2025
-					</span>
-				</li>
-				 <li class="padding-block-xxs border-bottom">
-							<span>
-								Expires on:
-								December 3, 2027
-							</span>
-					  </li>
-				<li class="padding-block-xxs"><!---->
-		<p class="margin-top-xs margin-top-sm-desktop">
-			<a href="https://learn.microsoft.com/credentials/certifications/github-copilot/"><!---->View certification page<!----></a>
-		</p>
-	<!----></li>
-			</ol>
-		</div>
-	
-				</div>
-			</div>
-			 <div id="skills" class="margin-top-md" data-test-id="skills">
-						<h5 class="font-size-h5 margin-bottom-xxs"><!---->Skills measured:</h5>
-						<ul>
-							<!----><li><!---->Domain 1: Responsible AI 7%<!----></li><!----><li><!---->Domain 2: GitHub Copilot plans and features 31%<!----></li><!----><li><!---->Domain 3: How GitHub Copilot works and handles data 15%<!----></li><!----><li><!---->Domain 4: Prompt crafting and Prompt engineering 9%<!----></li><!----><li><!---->Domain 5: Developer use cases for AI 14%<!----></li><!----><li><!---->Domain 6: Testing with GitHub Copilot 9%<!----></li><!----><li><!---->Domain 7: Privacy fundamentals and context exclusions 15%<!----></li><!---->
-						</ul>
-				  </div>
-		</section>
-	<!----></div></main>
-				  <div class="layout-body-footer " data-bi-name="layout-footer">
-		<footer id="footer" data-test-id="footer" data-bi-name="footer" class="footer-layout has-padding has-default-focus border-top  uhf-container" role="contentinfo">
-			<div class="display-flex gap-xs flex-wrap-wrap is-full-height padding-right-lg-desktop">
-				
-		<a data-mscc-ic="false" href="https://learn.microsoft.com/en-us/locale?target=https%3A%2F%2Flearn.microsoft.com%2Fen-us%2Fusers%2Fbullesivakrishna-1278%2Fcredentials%2Fa7e1063a2870d0a4" data-bi-name="select-locale" class="locale-selector-link flex-shrink-0 button button-sm button-clear external-link-indicator" id="" title="" aria-label="Content language selector. Currently set to English (United States)."><span class="icon" aria-hidden="true"><span class="docon docon-world"></span></span><span class="local-selector-link-text">English (United States)</span></a>
-	 <div class="ccpa-privacy-link" data-ccpa-privacy-link="">
-		
-		<a data-mscc-ic="false" href="https://aka.ms/yourcaliforniaprivacychoices" data-bi-name="your-privacy-choices" class="button button-sm button-clear flex-shrink-0 external-link-indicator" id="" title="">
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14" xml:space="preserve" height="16" width="43" aria-hidden="true" focusable="false">
-			<path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
-			<path d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
-			<path d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z" style="fill:#fff"></path>
-			<path d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z" style="fill:#06f"></path>
-		</svg>
-	
-			<span>Your Privacy Choices</span></a>
-	
-	</div>
-				<div class="flex-shrink-0">
-		<div class="dropdown has-caret-up">
-			<button data-test-id="theme-selector-button" class="dropdown-trigger button button-clear button-sm inner-focus theme-dropdown-trigger" aria-controls="{{ themeMenuId }}" aria-expanded="false" title="Theme" data-bi-name="theme">
-				<span class="icon">
-			<span class="docon docon-sun" aria-hidden="true"></span>
-				</span>
-				<span>Theme</span>
-				<span class="icon expanded-indicator" aria-hidden="true">
-					<span class="docon docon-chevron-down-light"></span>
-				</span>
-			</button>
-			<div class="dropdown-menu" id="{{ themeMenuId }}" role="menu" style="left: 0px;">
-				<ul class="theme-selector padding-xxs" data-test-id="theme-dropdown-menu">
-					<li class="theme display-block">
-						<button class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left is-selected" data-theme-to="light" aria-pressed="true">
-							<span class="theme-light margin-right-xxs">
-								<span class="theme-selector-icon border display-inline-block has-body-background" aria-hidden="true">
-									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
-										<rect width="22" height="14" class="has-fill-body-background"></rect>
-										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
-										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
-										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
-										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
-										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
-										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
-										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
-									</svg>
-								</span>
-							</span>
-							<span role="menuitem"> Light </span>
-						</button>
-					</li>
-					<li class="theme display-block">
-						<button class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left" data-theme-to="dark" aria-pressed="false">
-							<span class="theme-dark margin-right-xxs">
-								<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
-									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
-										<rect width="22" height="14" class="has-fill-body-background"></rect>
-										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
-										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
-										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
-										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
-										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
-										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
-										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
-									</svg>
-								</span>
-							</span>
-							<span role="menuitem"> Dark </span>
-						</button>
-					</li>
-					<li class="theme display-block">
-						<button class="button button-clear button-sm theme-control button-block justify-content-flex-start text-align-left" data-theme-to="high-contrast" aria-pressed="false">
-							<span class="theme-high-contrast margin-right-xxs">
-								<span class="border theme-selector-icon display-inline-block has-body-background" aria-hidden="true">
-									<svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 14">
-										<rect width="22" height="14" class="has-fill-body-background"></rect>
-										<rect x="5" y="5" width="12" height="4" class="has-fill-secondary"></rect>
-										<rect x="5" y="2" width="2" height="1" class="has-fill-secondary"></rect>
-										<rect x="8" y="2" width="2" height="1" class="has-fill-secondary"></rect>
-										<rect x="11" y="2" width="3" height="1" class="has-fill-secondary"></rect>
-										<rect x="1" y="1" width="2" height="2" class="has-fill-secondary"></rect>
-										<rect x="5" y="10" width="7" height="2" rx="0.3" class="has-fill-primary"></rect>
-										<rect x="19" y="1" width="2" height="2" rx="1" class="has-fill-secondary"></rect>
-									</svg>
-								</span>
-							</span>
-							<span role="menuitem"> High contrast </span>
-						</button>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-			</div>
-			<ul class="links" data-bi-name="footerlinks">
-				<li class="manage-cookies-holder" hidden=""></li>
-				<li>
-		
-		<a data-mscc-ic="false" href="https://learn.microsoft.com/en-us/principles-for-ai-generated-content" data-bi-name="aiDisclaimer" class=" external-link-indicator" id="" title="">AI Disclaimer</a>
-	
-	</li><li>
-		
-		<a data-mscc-ic="false" href="https://learn.microsoft.com/en-us/previous-versions/" data-bi-name="archivelink" class=" external-link-indicator" id="" title="">Previous Versions</a>
-	
-	</li> <li>
-	
+</div>
+</div>
+</div>
+</section>
 
-		
-		<a data-mscc-ic="false" href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" data-bi-name="bloglink" class=" external-link-indicator" id="" title="">Blog</a>
-	
-	</li> <li>
-		
-		<a data-mscc-ic="false" href="https://learn.microsoft.com/en-us/contribute" data-bi-name="contributorGuide" class=" external-link-indicator" id="" title="">Contribute</a>
-	
-	</li><li>
-		
-		<a data-mscc-ic="false" href="https://go.microsoft.com/fwlink/?LinkId=521839" data-bi-name="privacy" class=" external-link-indicator" id="" title="">Privacy</a>
-	
-	</li><li>
-		
-		<a data-mscc-ic="false" href="https://learn.microsoft.com/en-us/legal/termsofuse" data-bi-name="termsofuse" class=" external-link-indicator" id="" title="">Terms of Use</a>
-	
-	</li><li>
-		
-		<a data-mscc-ic="false" href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" data-bi-name="trademarks" class=" external-link-indicator" id="" title="">Trademarks</a>
-	
-	</li>
-				<li>© Microsoft 2025</li>
-			</ul>
-		</footer>
+</div>
+<div class="column is-one-quarter-tablet">
 
-            
-			</div><script src="/Credentials - BULLESIVAKRISHNA-1278 _ Microsoft Learn_files/at.js.download" async="" defer="" integrity="sha384-1/viVM50hgc33O2gOgkWz3EjiD/Fy/ld1dKYXJRUyjNYVEjSUGcSN+iPiQF7e4cu" crossorigin="anonymous">
-			</script>
-        <script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
-        
+<div data-test-id="credential-verification">
+    <div class="image image-128x128 margin-bottom-xs">
+        <img alt="" role="presentation" src="/github-copilot.svg">
+    </div>
 
+    <ol class="list-style-none">
 
+        <li class="padding-block-xxs border-bottom">
+            <div class="display-flex flex-wrap-wrap gap-xxs align-items-center font-weight-semibold padding-block-xxs">
+                Status
+                <span class="badge badge-sm badge-success badge-filled margin-inline-xxs">Active</span>
+                <span class="badge badge-primary badge-sm">
+                    <span class="docon docon-check margin-right-xxs"></span>
+                    Online Verifiable
+                </span>
+            </div>
+        </li>
 
+        <!-- ✔ Dynamic Credential ID -->
+        <li class="padding-block-xxs border-bottom">
+            <span>Credential ID: <span class="dyn-cert-id"></span></span>
+        </li>
+
+        <!-- ✔ Dynamic Certification Number -->
+        <li class="padding-block-xxs border-bottom">
+            <span>Certification number: <span class="dyn-cert-num"></span></span>
+        </li>
+
+        <li class="padding-block-xxs border-bottom">
+            <span>Earned on: December 2, 2025</span>
+        </li>
+
+        <li class="padding-block-xxs border-bottom">
+            <span>Expires on: December 3, 2027</span>
+        </li>
+
+        <li class="padding-block-xxs">
+            <p class="margin-top-xs">
+                <a href="https://learn.microsoft.com/credentials/certifications/github-copilot/">
+                    View certification page
+                </a>
+            </p>
+        </li>
+
+    </ol>
+</div>
+
+</div>
+</div>
+
+<div id="skills" class="margin-top-md">
+    <h5 class="font-size-h5 margin-bottom-xxs">Skills measured:</h5>
+    <ul>
+        <li>Domain 1: Responsible AI 7%</li>
+        <li>Domain 2: GitHub Copilot plans and features 31%</li>
+        <li>Domain 3: How GitHub Copilot works and handles data 15%</li>
+        <li>Domain 4: Prompt crafting and Prompt engineering 9%</li>
+        <li>Domain 5: Developer use cases for AI 14%</li>
+        <li>Domain 6: Testing with GitHub Copilot 9%</li>
+        <li>Domain 7: Privacy fundamentals and context exclusions 15%</li>
+    </ul>
+</div>
+
+</section>
+
+</div>
+</main>
+
+<div class="layout-body-footer">
+    <footer class="footer-layout uhf-container" role="contentinfo">
+
+        <div class="display-flex gap-xs flex-wrap-wrap">
+
+            <!-- ✔ Dynamic-ready footer locale link -->
+            <a id="footer-locale-link"
+               data-mscc-ic="false"
+               href="#"
+               class="locale-selector-link button button-sm button-clear external-link-indicator">
+                <span class="icon"><span class="docon docon-world"></span></span>
+                <span class="local-selector-link-text">English (United States)</span>
+            </a>
+
+            <div class="ccpa-privacy-link">
+                <a data-mscc-ic="false"
+                   href="https://aka.ms/yourcaliforniaprivacychoices"
+                   class="button button-sm button-clear external-link-indicator">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14" height="16" width="43">
+                        <path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" fill="#fff"/>
+                        <path d="M22.6 0H7.4C3.5 0 .4 3.1.4 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.1-7-7-7z" fill="#06f"/>
+                    </svg>
+                    <span>Your Privacy Choices</span>
+                </a>
+            </div>
+
+            <!-- The rest of footer links -->
+        </div>
+
+        <ul class="links" data-bi-name="footerlinks">
+            <li><a href="https://learn.microsoft.com/en-us/principles-for-ai-generated-content" class="external-link-indicator">AI Disclaimer</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/previous-versions/" class="external-link-indicator">Previous Versions</a></li>
+            <li><a href="https://techcommunity.microsoft.com/t5/microsoft-learn-blog/bg-p/MicrosoftLearnBlog" class="external-link-indicator">Blog</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/contribute" class="external-link-indicator">Contribute</a></li>
+            <li><a href="https://go.microsoft.com/fwlink/?LinkId=521839" class="external-link-indicator">Privacy</a></li>
+            <li><a href="https://learn.microsoft.com/en-us/legal/termsofuse" class="external-link-indicator">Terms of Use</a></li>
+            <li><a href="https://www.microsoft.com/legal/intellectualproperty/Trademarks/" class="external-link-indicator">Trademarks</a></li>
+            <li>© Microsoft 2025</li>
+        </ul>
+
+    </footer>
+</div>
+
+		<script src="/Credentials - BULLESIVAKRISHNA-1278 _ Microsoft Learn_files/at.js.download" async defer integrity="sha384-1/viVM50hgc33O2gOgkWz3EjiD/Fy/ld1dKYXJRUyjNYVEjSUGcSN+iPiQF7e4cu" crossorigin="anonymous"></script>
+<script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
 
 <script>
 (() => {
@@ -789,6 +645,8 @@
 
 		// Close when clicking outside
 		document.addEventListener('click', (e) => {
+			// guard in case dropdown was removed
+			if (!dropdown || !menu) return;
 			if (!dropdown.contains(e.target)) closeMenu();
 		});
 
@@ -806,10 +664,10 @@
 })();
 </script>
 
-
 <script>
 window.addEventListener("DOMContentLoaded", () => {
 
+    // sample users - extend as needed
     const users = [
         {
             certId: "A9F1C3E7B24D89F0",
@@ -827,37 +685,93 @@ window.addEventListener("DOMContentLoaded", () => {
         }
     ];
 
+    // normalize path segments and remove empty strings (handles trailing slash)
     const url = new URL(window.location.href);
-    const path = url.pathname.split("/");
+    const segments = url.pathname.split('/').filter(s => s !== '');
+    const lastSegment = segments.length ? segments[segments.length - 1] : '';
 
     let certId = null;
 
-    if (path.includes("api")) {
-        certId = path[path.length - 1];
+    // Case 1: Long API URL (share link)
+    // detect "api" in the segments, then pick the last non-empty segment as certId
+    if (segments.includes('api')) {
+        certId = lastSegment;
     }
 
-    if (path.includes("credentials") && !path.includes("api")) {
-        const prettyId = path[path.length - 1];
-        const user = users.find(u => u.prettyId === prettyId);
-        if (user) certId = user.certId;
+    // Case 2: Pretty URL (credentials/<prettyId>)
+    if (segments.includes('credentials') && !segments.includes('api')) {
+        const prettyId = lastSegment;
+        const matched = users.find(u => u.prettyId === prettyId);
+        if (matched) certId = matched.certId;
     }
 
+    // find user by certId
     const user = users.find(u => u.certId === certId);
-    if (!user) return;
 
-    document.body.innerHTML = document.body.innerHTML.replace(/BANDI OM PRAKASH|CH HARSHITA/g, user.name);
+    // if no user found, we still fill dynamic fields with sensible defaults where possible
+    if (!user) {
+        // Option: if you want to bail out entirely when user not found, uncomment next line:
+        // return;
 
-    if (path.includes("api")) {
-        const prettyUrl =
-            `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
-        window.history.replaceState({}, "", prettyUrl);
+        // fallback behavior: attempt to fill dyn elements from URL tokens if present
+        // (but don't crash)
+        const dynNameEls = document.querySelectorAll(".dyn-name");
+        if (dynNameEls.length) {
+            // keep existing text if any; otherwise show "Guest"
+            dynNameEls.forEach(el => {
+                if (!el.textContent.trim()) el.textContent = "Guest";
+            });
+        }
+        return;
     }
+
+    // Populate dynamic name(s)
+    document.querySelectorAll(".dyn-name").forEach(el => {
+        el.textContent = user.name;
+    });
+
+    // Populate credential id and sharing id if those elements exist
+    const certEls = document.querySelectorAll(".dyn-cert-id");
+    certEls.forEach(el => el.textContent = user.certId || '');
+
+    const certNumEls = document.querySelectorAll(".dyn-cert-num");
+    // if you have a separate cert number, replace user.sharingId usage below with real cert number
+    certNumEls.forEach(el => el.textContent = user.sharingId || '431D32-B8C79E');
+
+    // sharing id placement (if you added #sharingid span)
+    const shareEl = document.getElementById('sharingid');
+    if (shareEl) shareEl.textContent = user.sharingId || '';
+
+  // Fix only the intended profile links (safe)
+document.querySelectorAll(".dynamic-user-link").forEach(a => {
+    a.href = `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
+});
+
+
+    // Fix top “Skip to main content” link
+    const skip = document.getElementById("dynamic-user-link");
+    if (skip) {
+        skip.href = `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
+    }
+
+    // Fix name link under image
+    const profile = document.getElementById("dynamic-profile-link");
+    if (profile) {
+        profile.href = `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
+    }
+
+    // If we arrived via an API share link, rewrite the URL to the pretty one (no reload)
+    if (segments.includes('api')) {
+        const prettyUrl = `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
+        try {
+            window.history.replaceState({}, "", prettyUrl);
+        } catch (e) {
+            // some environments may block replaceState; ignore silently
+        }
+    }
+
 });
 </script>
-
-
-
-
 
 </body>
 </html>
