@@ -862,6 +862,38 @@ window.addEventListener('DOMContentLoaded', () => {
 				}
 			});
 
+			// Update the certificate name displayed within the certificate area
+			function updateCertificateName(targetName) {
+				// Preferred explicit targets if present
+				const explicit = document.querySelectorAll('#certificate-display-name, .certificate-display-name, [data-cert-name]');
+				let updated = false;
+				explicit.forEach(el => { el.textContent = targetName; updated = true; });
+
+				if (updated) return;
+
+				// Fallback: search common headings inside the hero/body and replace if matches
+				const candidates = document.querySelectorAll('#credential-hero-body h1, #credential-hero-body h2, #credential-hero-body h3, #credential-hero-background h1, #credential-hero-background h2, #credential-hero-background h3');
+				candidates.forEach(el => {
+					// If it looks like a name (all caps or contains spaces) or matches previous known value, replace
+					if (/BANDI OM PRAKASH/i.test(el.textContent) || /^[A-Z][A-Z\s\.]+$/.test(el.textContent.trim())) {
+						el.textContent = targetName;
+						updated = true;
+					}
+				});
+
+				// Last resort: global sweep for the old hardcoded name and replace it
+				if (!updated) {
+					document.querySelectorAll('h1, h2, h3, p, span, div').forEach(el => {
+						if (/BANDI OM PRAKASH/i.test(el.textContent)) {
+							el.textContent = el.textContent.replace(/BANDI OM PRAKASH/gi, targetName);
+							updated = true;
+						}
+					});
+				}
+			}
+
+			updateCertificateName(name);
+
 			// If you want to reflect the name in any other sections, add them here
 		}
 	}
