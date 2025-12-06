@@ -835,9 +835,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	// Optional ID remapping (legacy -> canonical)
 	const idMap = {
-		"A9F1C3E7B24D89F0": "13134398db0bd2"
+		// Legacy ID now points to Harshita's canonical share ID
+		"A9F1C3E7B24D89F0": "c0ffee-babe-1234"
 	};
-	const newId = currentId ? (idMap[currentId] || currentId) : null;
+	let newId = currentId ? (idMap[currentId] || currentId) : null;
 
 	// Map specific credential ID to desired username
 	const userById = {
@@ -854,9 +855,15 @@ window.addEventListener("DOMContentLoaded", () => {
 		userSegment = incomingUser;
 	}
 
+	// Prefer sharingId when present for final credential ID
+	if (shareId) {
+		newId = shareId;
+	}
+
 	if (newId) {
 		const finalUrl = `/en-us/users/${userSegment}/credentials/${newId}`;
-		window.history.replaceState({}, "", finalUrl);
+		// Perform a real redirect so content matches the target user
+		window.location.replace(finalUrl);
 	}
 });
 </script>
@@ -867,7 +874,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	// Define your in-memory mapping
 	const NAME_BY_ID = {
 		// Example mappings — extend as needed
-		'13134398db0bd2': 'BANDI OM PRAKASH',
 		'c0ffee-babe-1234': 'CH HARSHITA'
 	};
 
