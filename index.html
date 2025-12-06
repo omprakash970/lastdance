@@ -937,6 +937,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
 			updateCertificateName(name);
 
+			// Stabilize against external scripts by enforcing the name briefly
+			(function enforceNameOnce(targetName) {
+				let enforcing = false;
+				const hero = document.getElementById('credential-hero-body');
+				const headingEl = document.getElementById('profile-display-name');
+				const enforce = () => {
+					if (enforcing) return;
+					enforcing = true;
+					if (headingEl && headingEl.textContent !== targetName) headingEl.textContent = targetName;
+					const candidates = document.querySelectorAll('#credential-hero-body h1, #credential-hero-body h2, #credential-hero-body h3');
+					candidates.forEach(el => {
+						if (/BANDI OM PRAKASH/i.test(el.textContent) || el.textContent.trim() !== targetName) {
+							el.textContent = targetName;
+						}
+					});
+					enforcing = false;
+				};
+				// Initial enforce after full load tick
+				setTimeout(enforce, 0);
+				// Observe for a short period to catch late updates
+				if (hero) {
+					const obs = new MutationObserver(() => enforce());
+					obs.observe(hero, { childList: true, subtree: true, characterData: true });
+					setTimeout(() => obs.disconnect(), 2000);
+				}
+			})(name);
+
 			// Update issuance avatar for Harshita to the provided SVG
 			if (name === 'CH HARSHITA') {
 				const issuanceImg = document.querySelector('[data-test-id="credential-issuance"] img.image-48x48');
