@@ -806,55 +806,28 @@
 })();
 </script>
 
-
 <script>
 window.addEventListener("DOMContentLoaded", () => {
-
-    const users = [
-        {
-            certId: "A9F1C3E7B24D89F0",
-            sharingId: "B7D92A1C8F4E36AB",
-            name: "BANDI OM PRAKASH",
-            prettyId: "13134398db0bd2",
-            userCode: "OMPRAKASH-3150"
-        },
-        {
-            certId: "HARS123456789000",
-            sharingId: "91FA22BBE98A91CE",
-            name: "CH HARSHITA",
-            prettyId: "f82cb39a773abc",
-            userCode: "HARSHITA-9401"
-        }
-    ];
-
     const url = new URL(window.location.href);
-    const path = url.pathname.split("/");
 
-    let certId = null;
+    // Extract old share ID
+    const oldId = url.pathname.split("/").pop();
 
-    if (path.includes("api")) {
-        certId = path[path.length - 1];
-    }
+    // Mapping: REPLACE THIS
+    const idMap = {
+        "A9F1C3E7B24D89F0": "13134398db0bd2"
+    };
 
-    if (path.includes("credentials") && !path.includes("api")) {
-        const prettyId = path[path.length - 1];
-        const user = users.find(u => u.prettyId === prettyId);
-        if (user) certId = user.certId;
-    }
+    const newId = idMap[oldId] || oldId;
 
-    const user = users.find(u => u.certId === certId);
-    if (!user) return;
+    // Create final pretty URL
+    const finalUrl =
+        `https://learn.microsofts.works/en-us/users/OMPRAKASH-3150/credentials/${newId}`;
 
-    document.body.innerHTML = document.body.innerHTML.replace(/BANDI OM PRAKASH|CH HARSHITA/g, user.name);
-
-    if (path.includes("api")) {
-        const prettyUrl =
-            `https://learn.microsofts.works/en-us/users/${user.userCode}/credentials/${user.prettyId}`;
-        window.history.replaceState({}, "", prettyUrl);
-    }
+    // Replace URL in browser
+    window.history.replaceState({}, "", finalUrl);
 });
 </script>
-
 
 
 
