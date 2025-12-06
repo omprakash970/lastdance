@@ -822,7 +822,7 @@
 
 
 <script>
-window.addEventListener("DOMContentLoaded", () => {
+(function() {
 	const url = new URL(window.location.href);
 	const pathParts = url.pathname.split('/').filter(Boolean);
 	const isApiShare = pathParts[0] === 'api' && pathParts[1] === 'credentials' && pathParts[2] === 'share';
@@ -886,7 +886,7 @@ window.addEventListener("DOMContentLoaded", () => {
 			document.body.innerHTML = document.body.innerHTML.replace(/BANDI OM PRAKASH|CH HARSHITA/g, targetName);
 		}
 	}
-});
+})();
 </script>
 
 </body>
