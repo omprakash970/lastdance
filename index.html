@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html class="layout layout-single contentpage show-breadcrumb default-focus theme-light" lang="en-us" dir="ltr" data-authenticated="true" data-auth-status-determined="true" data-target="docs" x-ms-format-detection="none" style="--window-inner-height: 734px !important; --atlas-header-height: 202px !important; --atlas-footer-height: 128px !important; --atlas-header-visible-height: 0px !important; --atlas-footer-visible-height: 128px !important;" crxlauncher=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+			<script>
+			// Prevent initial theme flicker by applying saved theme ASAP
+			(function() {
+				try {
+					var key = 'site-theme';
+					var saved = localStorage.getItem(key) || 'light';
+					var root = document.documentElement;
+					var classes = ['theme-light','theme-dark','theme-high-contrast'];
+					for (var i=0;i<classes.length;i++) { root.classList.remove(classes[i]); }
+					root.classList.add('theme-' + saved);
+					root.setAttribute('data-theme', saved);
+				} catch (e) { /* noop */ }
+			})();
+			</script>
 			<title>Credentials - BANDI-OMPRAKASH-3051 | Microsoft Learn</title>
 			
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
