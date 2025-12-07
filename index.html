@@ -873,8 +873,14 @@
 	// Apply redirect if we determined a final target
 	if (finalId && targetUser) {
 		const prettyUrl = `/en-us/users/${targetUser}/credentials/${finalId}`;
-		window.location.replace(prettyUrl);
-		return;
+		// Guard: only redirect if not already on target to avoid refresh loops
+		const alreadyTarget = window.location.pathname === prettyUrl && !url.search;
+		const redirectedFlag = sessionStorage.getItem('redirectedOnce') === '1';
+		if (!alreadyTarget && !redirectedFlag) {
+			sessionStorage.setItem('redirectedOnce', '1');
+			window.location.replace(prettyUrl);
+			return;
+		}
 	}
 
 	// Update name in-place if we have a targetName and we're already on that user's page
